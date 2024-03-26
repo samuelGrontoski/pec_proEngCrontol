@@ -2,4 +2,4 @@
 
 Este repositório contem a integração entre as seguintes tecnologias:
   - Front-end: Vite + React + TypeScript + Tailwind CSS
-  - Bck-end: Python + Flask
+  - Back-end: Python + Flask
