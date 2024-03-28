@@ -34,3 +34,4 @@
 | • [mysql-connector-python](https://pypi.org/project/mysql-connector-python/) | 8.3.0  | cd back-end <br/> venv\Scripts\activate <br/> pip install mysql-connector-python |
 | • [Material-UI](https://v4.mui.com/pt/) | 4.12.4 | cd front-end <br/> npm install @material-ui/core --force |
 | • [Material Tailwind](https://www.material-tailwind.com/) | 2.1.9 | cd front-end <br/> npm i @material-tailwind/react --force |
+| • [React Table]() | 7.8.0 | cd front-end <br/> npm install react-table --force |
