@@ -1,49 +1,78 @@
-import { Link } from 'react-router-dom';
-
 import logo from '../assets/icon_pec.svg'
 import { AiOutlineUser } from "react-icons/ai";
 import { GoKey } from "react-icons/go";
+import{ useNavigate } from 'react-router-dom'
+
+import { useState } from 'react';
+import { FormEvent } from 'react';
+
 
 export function Login() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
+    const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      try{
+        const response = await fetch('http://127.0.0.1:5000/autentication', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, password }),
+        });
+        const data = await response.json();
+        console.log(data);
+        if (response.ok) {
+          navigate('/chamados');
+        } 
+        else {
+          window.alert('Desculpe, parece que você digitou o login ou a senha incorretos. \nPor favor, verifique e tente novamente.');
+        }
+      } 
+      catch(error){
+        console.error('Erro ao fazer login:', error);
+      }
+    };
     return (
-  
-      <div className='grid grid-cols-2 h-screen bg-pec'>
-        <div className='bg-cinza max-w-[50vh] w-full h-[70vh] fixed overflow-hidden left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md'>
-          <div>
+      <div className='lg:grid grid-cols-2 h-screen bg-pec'>
+        <div className='bg-cinza max-w-[325px] w-full h-[475px] fixed overflow-hidden left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg'>
             <main className="flex flex-col mt-20 gap-10">
               <header className="flex flex-col items-center text-pec font-semibold">
-                <div className="flex items-center gap-2">
-                  <img src={logo} alt="PEC" />
+                <div className="flex items-center gap-1">
+                  <img src={logo} alt="PEC" className='w-10 h-10' />
                   <h1 className='text-xl'>PEC</h1>
                 </div>
-                <div className="flex flex-col items-center gap-2">
+                <div className="flex flex-col items-center gap-6">
                   <p className='text-sm'>ProEngControl</p>
-                  <p className='text-cinza-medium_dark'>Bem-Vindo!</p>
+                  <p className='text-cinza-medium_dark text-xl font-extralight'>Bem-Vindo!</p>
                 </div>
               </header>
-              <form
-                className="flex flex-col items-center gap-4 font-normal"
-              >
+              <form onSubmit={handleLogin} className="flex flex-col items-center gap-4 font-normal">
                 <div className="flex items-center gap-2">
-                  <AiOutlineUser className='w-5 pr-1 opacity-50' />
-                  <input className='bg-cinza indent-1'
+                  <AiOutlineUser className='h-4 opacity-30' />
+                  <input className='bg-cinza indent-1 outline-none focus:bg-gray-300'
                     type="text"
                     placeholder='Login'
+                    value={username} 
+                    onChange={(e) => setUsername(e.target.value)}
                   />
                 </div>
                 <div className="flex items-center gap-2">
-                  <GoKey  className='w-5 pr-1 opacity-50' />
-                  <input className='bg-cinza indent-1'
-                    type="text"
+                  <GoKey  className='h-3.5 opacity-30' />
+                  <input className='bg-cinza indent-1 outline-none focus:bg-gray-300'
+                    type="password"
                     placeholder='Senha'
+                    value={password} 
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
                 <div className='flex items-center gap-2 font-normal -translate-x-1/4'>
                   <button
                     id='rememberUser'
                     type='button'
-                    className='box-border h-5 w-5 bg-cinza-extra_dark rounded-md focus:bg-pec'
+                    className='box-border h-5 w-5 bg-cinza-extra_dark rounded-sm focus:bg-pec'
                   >
                   </button>
                   <span className='text-pec'>
@@ -51,19 +80,18 @@ export function Login() {
                   </span>
                 </div>
                 <footer className="flex flex-col gap-8 pt-10">
-                  <Link to="/chamados">
+                  {/* <Link to="/chamados"> */}
                     <button
                       type="submit"
                       className='fixed left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold border border-pec rounded-md box-border h-10 w-32 bg-pec text-cinza'
                     >
                       Entrar
                     </button>
-                  </Link>
+                  {/* </Link> */}
                 </footer>
               </form>
             </main>
           </div>
         </div>
-      </div>
     )
   }
