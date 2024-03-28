@@ -6,6 +6,7 @@
 |------------|------------|
 | • [Tecnologias](#tecnologias) | Tecnologias utilizadas para a criação do projeto |
 | • [Bibliotecas](#bibliotecas) | Bibliotecas complementares utilizadas |
+| • [Referências](#referências) | Material de apoio |
 #
 
 ### Tecnologias
@@ -35,3 +36,7 @@
 | • [Material-UI](https://v4.mui.com/pt/) | 4.12.4 | cd front-end <br/> npm install @material-ui/core --force |
 | • [Material Tailwind](https://www.material-tailwind.com/) | 2.1.9 | cd front-end <br/> npm i @material-tailwind/react --force |
 | • [React Table]() | 7.8.0 | cd front-end <br/> npm install react-table --force |
+
+### Referências
+https://www.samuelliedtke.com/blog/react-table-tutorial-part-1/ <br/>
+https://www.samuelliedtke.com/blog/react-table-tutorial-part-2
