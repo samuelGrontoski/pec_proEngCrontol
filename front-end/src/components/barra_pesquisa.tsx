@@ -1,4 +1,5 @@
 import { BsSearch } from "react-icons/bs";
+import { BiSolidUserCircle } from "react-icons/bi";
 
 export const BarraPesquisa = (props) => {
     return (
@@ -8,6 +9,9 @@ export const BarraPesquisa = (props) => {
                 type="text"
                 placeholder='Pesquisar'
             />
+            <button>
+                <BiSolidUserCircle className="text-2xl text-pec"/>
+            </button>
             {props.children}
         </div>
     )

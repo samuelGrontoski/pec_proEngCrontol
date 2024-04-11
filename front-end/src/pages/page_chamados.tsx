@@ -1,7 +1,10 @@
-import React from "react";
-import { Link } from 'react-router-dom';
+// Componentes
 import { Sidebar } from '../components/sidebar';
 import { BarraPesquisa } from '../components/barra_pesquisa';
+import { HelloUser } from '../components/hello_user';
+
+import React from "react";
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { CollapsibleTable } from "../components/collapsible_table"
 
@@ -40,22 +43,19 @@ export function Chamados() {
     };
 
     return (
-        <div className="bg-cinza-200 w-full h-full">
+        <div>
             <body>
+                <div className="bg-cinza-200 fixed inset-y-0 w-screen" />
                 <div className="bg-pec fixed inset-y-0 left-0 w-[200px]">
                     <Sidebar />
                 </div>
-                <main className='absolute inset-y-0 right-0 w-10/12 grid gap-y-5 p-10'>
+                <main className='absolute inset-y-0 right-0 w-10/12 grid content-start gap-y-5 p-10'>
                     <BarraPesquisa />
-                    <div className='w-9/12 text-cinza-500'>
-                        <p className='text-sm'>Dashboard Chamados</p>
-                        <p className='text-base'>Olá, @usuário</p>
+                    <HelloUser user={"usuário"} />
+                    <div className="py-5">
+                        <CollapsibleTable />
                     </div>
-                    <div>
-                        <div className="py-5">
-                            <CollapsibleTable />
-                        </div>
-                        {/* <div className='grid justify-items-center p-5'>
+                    {/* <div className='grid justify-items-center p-5'>
                             <table className="table-fixed table-xs w-11/12 md:w-full border-collapse text-xs">
                                 <thead>
                                     <tr className='bg-table_header'>
@@ -91,7 +91,6 @@ export function Chamados() {
                                 </tbody>
                             </table>
                         </div> */}
-                    </div>
                 </main>
             </body>
 
