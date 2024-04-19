@@ -6,19 +6,19 @@ export default {
   ],
   theme: {
     screens: {
-      'sm': {'min': '640px', 'max': '767px'},
+      'sm': { 'min': '640px', 'max': '767px' },
       // Tablet
 
-      'md': {'min': '768px', 'max': '1023px'},
+      'md': { 'min': '768px', 'max': '1023px' },
       // Laptop
 
-      'lg': {'min': '1024px', 'max': '1279px'},
+      'lg': { 'min': '1024px', 'max': '1279px' },
       // Desktop
 
-      'xl': {'min': '1280px', 'max': '1535px'},
+      'xl': { 'min': '1280px', 'max': '1535px' },
       // TV
 
-      '2xl': {'min': '1536px'},
+      '2xl': { 'min': '1536px' },
     },
     extend: {
       colors: {
@@ -30,7 +30,13 @@ export default {
           300: '#d9d9d9',
           400: '#b8b8b8',
           500: '#444444',
-        }
+        },
+        'no_plano': '#DB2E2A',
+        'fora_plano': '#FFCC6D',
+        'engenharia': '#3366FF',
+      },
+      fontFamily: {
+        'jersey': ['Jersey 10', 'sans-serif'],
       },
       keyframes: {
         wiggle: {
@@ -43,5 +49,5 @@ export default {
       }
     }
   },
-  plugins: [],
+  plugins: ['@tailwindcss/typography'],
 }
