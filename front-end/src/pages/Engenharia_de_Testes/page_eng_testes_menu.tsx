@@ -5,6 +5,8 @@ import { HelloUser } from '../../components/hello_user';
 import { MenuButton } from '../../components/button_menu';
 
 // Icones
+import { CiViewBoard } from "react-icons/ci";
+import { LuUsers2 } from "react-icons/lu";
 import { BsListColumnsReverse } from "react-icons/bs";
 import { PiCircuitry } from "react-icons/pi";
 import { BsGraphUpArrow } from "react-icons/bs";
@@ -29,7 +31,10 @@ export function MenuEngTestes() {
                     <BarraPesquisa />
                     <HelloUser pagina={'Engenharia de testes'} user={localStorage.getItem("user")} />
                     <div className="bg-cinza-100 rounded-md drop-shadow grid grid-cols-6 justify-items-center items-start p-10 gap-10">
-                        <MenuButton name={"Listar chamados"} link={"/engenharia_testes/chamados"} icon={BsListColumnsReverse} />
+                        <MenuButton name={"Visualizar chamados"} link={"/engenharia_testes/visualizar_chamados"} icon={CiViewBoard} />
+                        <MenuButton name={"Abrir chamado"} link={"/engenharia_testes/abrir_chamado"} icon={LuUsers2} />
+                        <MenuButton name={"Atendimento de chamado"} link={"/engenharia_testes/chamados"} icon={BsListColumnsReverse} />
+                        {/* 
                         <MenuButton name={"Chamado de Engenharia"} link={"/engenharia_testes/chamados_engenharia"} icon={PiCircuitry} />
                         <MenuButton name={"Relatório de chamados"} link={"/engenharia_testes/relatorio_chamados"} icon={BsGraphUpArrow} />
                         <MenuButton name={"Enviar Plano de Produção"} link={"/engenharia_testes/enviar_plano_de_producao"} icon={TbTableImport} />
@@ -41,7 +46,7 @@ export function MenuEngTestes() {
                         <MenuButton name={"Manutenção Preventiva"} link={"/engenharia_testes/manutencao_preventiva"} icon={GrHostMaintenance} />
                         <MenuButton name={"Formulários de Manutenção"} link={"/engenharia_testes/formularios_de_manutencao"} icon={FaWpforms} />
                         <MenuButton name={"Listar Notas Fiscais"} link={"/engenharia_testes/listar_notas_fiscais"} icon={CgNotes} />
-                        <MenuButton name={"Adicionar Nota"} link={"/engenharia_testes/adicionar_nota"} icon={AiOutlineFileAdd} />
+                        <MenuButton name={"Adicionar Nota"} link={"/engenharia_testes/adicionar_nota"} icon={AiOutlineFileAdd} /> */}
                     </div>
                 </main>
             </body>
