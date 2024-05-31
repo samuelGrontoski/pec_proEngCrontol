@@ -1,10 +1,9 @@
 import { useState } from 'react';
 // Componentes
 import { Sidebar } from '../components/sidebar';
-import { BarraPesquisa } from '../components/barra_pesquisa';
 import { HelloUser } from '../components/hello_user';
 import { MenuButton } from '../components/button_menu';
-import logo from "../assets/icon_pec.svg"
+import { Logo } from '../components/logo';
 
 // Icons
 import { FaGears } from "react-icons/fa6";
@@ -15,30 +14,25 @@ export function Menu() {
     const [showSidebar, setShowSidebar] = useState(false);
 
     return (
-        <>
-            <header className="grid grid-rows-1 bg-cinza-200">
+        <div className='w-screen h-screen'>
+            <header className="grid grid-rows-1 bg-cinza-200 h-1/6">
                 <div className='inline-flex p-5 gap-4'>
                     <button
                         onClick={() => setShowSidebar(true)}
                         className='text-pec text-4xl hover:scale-110 transition duration-200 flex justify-start items-start'>
                         <IoMenu />
                     </button>
-
-                    <div className="grid justify-items-center items-center text-pec font-semibold">
-                        <div className="flex items-center gap-2">
-                            <img src={logo} alt="PEC" />
-                            <h1 className='text-xl'>PEC</h1>
+                    <Logo />
+                    <div className='flex-col-1 ml-8 mt-4'>
+                        <div className='inline-flex content font-bold text-pec gap-2 justify-center items-center'>
+                            <FaHome className='mobile:w-0' />
+                            <p className='mobile:text-[0px]'>Menu</p>
                         </div>
-                        <p className='text-sm'>ProEngControl</p>
+                        <HelloUser />
                     </div>
-                    <div className='inline-flex content font-bold text-pec ml-8 gap-2 justify-center items-center'>
-                        <FaHome />
-                        <p>Menu</p>
-                    </div>
-                    {/* <BarraPesquisa /> */}
                 </div>
             </header>
-            <body className='bg-cinza-200 w-screen h-screen px-5'>
+            <body className='bg-cinza-200 w-screen h-5/6 px-5'>
                 <div className="bg-cinza-100 rounded-md drop-shadow grid mobile:grid-cols-2 sm:grid-cols-5 grid-cols-6 justify-items-center p-10 gap-10">
                     <MenuButton name={"Engenharia de Testes"} link={"/engenharia_testes"} icon={FaGears} />
                     {/* <MenuButton name={"Qualidade"} link={"/qualidade"} icon={FaRegCheckSquare} /> */}
@@ -56,6 +50,6 @@ export function Menu() {
                     </button>
                 </div>
             )}
-        </>
+        </div>
     )
 }

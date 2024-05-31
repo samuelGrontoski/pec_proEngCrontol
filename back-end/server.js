@@ -135,6 +135,44 @@ app.get('/api/produtos', (req, res) => {
     });
 });
 
+// Rota para coletar dados dos computadores
+app.get('/api/computadores', (req, res) => {
+    const query = `
+        SELECT
+            *
+        FROM
+            computadores
+        ORDER BY
+            cmp_id
+    `;
+    pool.query(query, (err, result) => {
+        if (err) {
+            console.error('Erro:', err);
+            return res.status(500).json({ message: 'Erro interno do servidor' });
+        }
+        return res.status(200), res.json(result);
+    });
+});
+
+// Rota para coletar dados dos produtos vinculados aos computadores
+app.get('/api/vinculoComputadores', (req, res) => {
+    const query = `
+        SELECT
+            *
+        FROM
+            vinculacao_computadores_produtos
+        ORDER BY
+            vcp_produtos_pro_id
+    `;
+    pool.query(query, (err, result) => {
+        if (err) {
+            console.error('Erro:', err);
+            return res.status(500).json({ message: 'Erro interno do servidor' });
+        }
+        return res.status(200), res.json(result);
+    });
+});
+
 // Rota para buscar chamados
 app.get('/api/visualizarchamados', (req, res) => {
     const query = `
