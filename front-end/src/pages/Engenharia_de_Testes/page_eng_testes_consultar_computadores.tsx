@@ -24,22 +24,22 @@ function Row(props: any) {
     return (
         <React.Fragment>
             <TableRow>
-                <TableCell>
-                    <p className='text-start'>{row.cmp_identificacao}</p>
+                <TableCell className='border-2 border-gray-300'>
+                    <p className='text-start'>PC-{row.cmp_identificacao}</p>
                 </TableCell>
-                <TableCell>
+                <TableCell className='border-2 border-gray-300'>
                     <p className='text-start'>{row.cmp_localizacao ? row.cmp_localizacao : "DESCONHECIDA"}</p>
                 </TableCell>
-                <TableCell>
+                <TableCell className='border-2 border-gray-300'>
                     <p className='text-start'>{row.cmp_proprietario}</p>
                 </TableCell>
-                <TableCell>
+                <TableCell className='border-2 border-gray-300'>
                     <p className='text-start'>{row.cmp_etapa_teste}</p>
                 </TableCell>
-                <TableCell>
+                <TableCell className='border-2 border-gray-300'>
                     <p className='text-start'>{row.cmp_programas_instalados}</p>
                 </TableCell>
-                <TableCell>
+                <TableCell className='border-2 border-gray-300'>
                     <p className='text-start'>{row.cmp_observacao}</p>
                 </TableCell>
             </TableRow>
@@ -58,12 +58,12 @@ export function ConsultarComputadores() {
         const fetchComputadores = async () => {
             try {
                 // Computadores
-                const responseComputadores = await fetch('http://127.0.0.1:5000/api/computadores');
+                const responseComputadores = await fetch('http://172.17.4.23:5000/api/computadores');
                 if (responseComputadores.ok) {
                     const dataComputadores = await responseComputadores.json();
 
                     // Clientes
-                    const responseClientes = await fetch('http://127.0.0.1:5000/api/clientes');
+                    const responseClientes = await fetch('http://172.17.4.23:5000/api/clientes');
                     if (responseClientes.ok) {
                         const dataClientes = await responseClientes.json();
 
@@ -87,8 +87,8 @@ export function ConsultarComputadores() {
                     }
 
                     // Produtos e Vinculo de Produtos
-                    const responseProdutos = await fetch('http://127.0.0.1:5000/api/produtos');
-                    const responseVinculoProdutos = await fetch('http://127.0.0.1:5000/api/vinculoComputadores');
+                    const responseProdutos = await fetch('http://172.17.4.23:5000/api/produtos');
+                    const responseVinculoProdutos = await fetch('http://172.17.4.23:5000/api/vinculoComputadores');
                     if (responseProdutos.ok && responseVinculoProdutos.ok) {
                         const dataProdutos = await responseProdutos.json();
                         const dataVinculoProdutos = await responseVinculoProdutos.json();
@@ -187,7 +187,7 @@ export function ConsultarComputadores() {
                         <Table aria-label="simple table">
                             <TableHead sx={{ backgroundColor: '#d9d9d9' }}>
                                 <TableRow>
-                                    <TableCell>
+                                    <TableCell className='w-[120px]'>
                                         <p className='font-bold text-base text-start text-pec'>Identificação</p>
                                     </TableCell>
                                     <TableCell>
@@ -235,7 +235,7 @@ export function ConsultarComputadores() {
                     <Sidebar />
                     <button
                         onClick={() => setShowSidebar(false)}
-                        className='absolute top-5 left-5 text-cinza-200 text-4xl hover:scale-110 transition duration-200'
+                        className='absolute top-12 left-12 text-cinza-200 text-4xl hover:scale-110 transition duration-200'
                     >
                         <IoMenu />
                     </button>
