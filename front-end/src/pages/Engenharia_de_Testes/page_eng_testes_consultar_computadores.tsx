@@ -58,12 +58,12 @@ export function ConsultarComputadores() {
         const fetchComputadores = async () => {
             try {
                 // Computadores
-                const responseComputadores = await fetch('http://172.17.4.23:5000/api/computadores');
+                const responseComputadores = await fetch('http://172.17.12.28:5000/api/computadores');
                 if (responseComputadores.ok) {
                     const dataComputadores = await responseComputadores.json();
 
                     // Clientes
-                    const responseClientes = await fetch('http://172.17.4.23:5000/api/clientes');
+                    const responseClientes = await fetch('http://172.17.12.28:5000/api/clientes');
                     if (responseClientes.ok) {
                         const dataClientes = await responseClientes.json();
 
@@ -87,8 +87,8 @@ export function ConsultarComputadores() {
                     }
 
                     // Produtos e Vinculo de Produtos
-                    const responseProdutos = await fetch('http://172.17.4.23:5000/api/produtos');
-                    const responseVinculoProdutos = await fetch('http://172.17.4.23:5000/api/vinculoComputadores');
+                    const responseProdutos = await fetch('http://172.17.12.28:5000/api/produtos');
+                    const responseVinculoProdutos = await fetch('http://172.17.12.28:5000/api/vinculoComputadores');
                     if (responseProdutos.ok && responseVinculoProdutos.ok) {
                         const dataProdutos = await responseProdutos.json();
                         const dataVinculoProdutos = await responseVinculoProdutos.json();
@@ -149,7 +149,7 @@ export function ConsultarComputadores() {
 
     return (
         <div className='w-screen h-screen'>
-            <header className="grid grid-rows-1 bg-cinza-200 h-1/6">
+            <div className="grid grid-rows-1 bg-cinza-200 h-1/6">
                 <div className='inline-flex p-5 gap-4'>
                     <button
                         onClick={() => setShowSidebar(true)}
@@ -173,8 +173,8 @@ export function ConsultarComputadores() {
                         <HelloUser />
                     </div>
                 </div>
-            </header>
-            <body className='bg-cinza-200 mobile:px-3 h-5/6'>
+            </div>
+            <div className='bg-cinza-200 mobile:px-3 h-5/6'>
                 <div className='mb-4 mx-10'>
                     <input
                         type="text"
@@ -230,7 +230,7 @@ export function ConsultarComputadores() {
                         labelDisplayedRows={({ from, to, count }) => `${from}-${to} de ${count}`}
                     />
                 </div>
-            </body>
+            </div>
 
             {showSidebar && (
                 <div className='backdrop-blur-xs fixed inset-y-0 w-screen z-50'>
