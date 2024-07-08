@@ -23,16 +23,14 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Servidor backend rodando em http://0.0.0.0:${PORT}`);
-});
+
 // Configurações do banco de dados
 const pool = mysql.createPool({
     connectionLimit: 10, // Limite máximo de conexões no pool
     host: process.env.DB_HOST || '10.161.100.11',
     user: process.env.DB_USER || 'bct_write',
     password: process.env.DB_PASSWORD || 'bct_write@',
-    database: process.env.DB_DATABASE || 'better_homolog'
+    database: process.env.DB_DATABASE || 'better_call_test'
 });
 
 // Rota de login
@@ -117,6 +115,40 @@ app.delete('/api/deletarchamado', (req, res) => {
         }
 
         return res.status(200).json({ message: 'Chamado deletado com sucesso' });
+    });
+});
+
+// Rota para coletar o id do último plano de produção
+app.get('/api/planododia', (req, res) => {
+    const query = 'SELECT pdp_id FROM planos_de_producao ORDER BY pdp_id DESC LIMIT 1';
+    pool.query(query, (err, result) => {
+        if (err) {
+            console.error('Erro:', err);
+            return res.status(500).json({ message: 'Erro interno do servidor' });
+        }
+
+        return res.status(200).json(result[0]);
+    });
+});
+
+// Rota para coletar os produtos do plano de produção atual
+app.get('/api/produtosnoplano', (req, res) => {
+    const { planoProducao } = req.query;
+    const query = `
+        SELECT 
+            odp_id, odp_cliente, odp_produto 
+        FROM 
+            ordens_de_producao 
+        WHERE 
+            odp_plano_de_producao = ?
+    `;
+    pool.query(query, [planoProducao], (err, result) => {
+        if (err) {
+            console.error('Erro:', err);
+            return res.status(500).json({ message: 'Erro interno do servidor' });
+        }
+
+        return res.status(200).json(result);
     });
 });
 
