@@ -1,3 +1,0 @@
-Host: 10.161.100.11
-User: bct_write
-Password: bcwriter22 ou bct_write@
