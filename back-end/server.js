@@ -27,10 +27,10 @@ app.use(express.json());
 // Configurações do banco de dados
 const pool = mysql.createPool({
     connectionLimit: 10, // Limite máximo de conexões no pool
-    host: process.env.DB_HOST || '10.161.100.11',
-    user: process.env.DB_USER || 'bct_write',
-    password: process.env.DB_PASSWORD || 'bct_write@',
-    database: process.env.DB_DATABASE || 'better_call_test'
+    host: process.env.DB_HOST || '',
+    user: process.env.DB_USER || '',
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_DATABASE || ''
 });
 
 // Rota de login
